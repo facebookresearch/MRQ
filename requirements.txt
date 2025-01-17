@@ -1,0 +1,7 @@
+ale_py>=0.10.1
+dm_control>=1.0.25
+gymnasium>=1.0.0
+imageio>=2.0.0
+numpy>=2.0.0
+opencv_python>=4.10.0.84
+torch>=2.3.0

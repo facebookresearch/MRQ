@@ -32,4 +32,4 @@ python main.py --env Atari-Pong-v5
 
 ### Results
 
-Results are formatted in human-readable .txt files under [/results](results). There is a code snippet in [MRQ/utils.py](MRQ/utils.py#L15) to process the .txt files into a dictionary of arrays. 
+Results are formatted in human-readable .txt files under [/results](results). There is a code snippet in [MRQ/utils.py](MRQ/utils.py#L46) to process the .txt files into a dictionary of arrays. 

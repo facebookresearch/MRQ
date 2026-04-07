@@ -30,7 +30,7 @@ import utils
 class Env:
     def __init__(self, env_name: str, seed: int=0, eval_env: bool=False, remove_info: bool=True):
         env_type = env_name.split('-',1)[0]
-        self.env = globals()[f'{env_type}Preprocessing'](env_name, seed, eval) # Calls the corresponding preprocessing class.
+        self.env = globals()[f'{env_type}Preprocessing'](env_name, seed, eval_env) # Calls the corresponding preprocessing class.
 
         # Copy instance variables
         for k in ['offline', 'pixel_obs', 'obs_shape', 'history', 'max_ep_timesteps', 'action_space']:
@@ -216,7 +216,7 @@ class AtariPreprocessing:
 
         self.pool_queue = deque(maxlen=2)
         self.history_queue = deque(maxlen=self.history)
-        self.eval = eval
+        self.eval_env = eval_env
 
 
     def get_obs(self):
@@ -251,7 +251,7 @@ class AtariPreprocessing:
 
     def step(self, action: int):
         # If evaluation env: somtimes sample actions randomly.
-        if self.eval and np.random.uniform(0,1) < self.eval_eps:
+        if self.eval_env and np.random.uniform(0,1) < self.eval_eps:
             action = self.action_space.sample()
 
         reward = 0.0
